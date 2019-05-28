@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { setLocalItem, getLocalItem } from '../utils/LocalStorage.util.js';
+import { setLocalItem, getLocalItem, removeLocalItem } from '../utils/LocalStorage.util';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +12,33 @@ export class DataService {
   constructor(private httpClient: HttpClient) {
   }
 
-  signIn() {
-    this.httpClient.post(`${this.apiURL}/sign-in`, { password: 'admin', email: 'admin' } )
-      .subscribe(res => setLocalItem('authToken', res.token));
+  signIn(email, password) {
+    return this.httpClient.post(`${this.apiURL}/sign-in`, { password, email })
+      .toPromise()
+      .then((data: any) => setLocalItem('authToken', data.token));
   }
 
   getUsersList() {
     const token = getLocalItem('authToken');
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-    return this.httpClient.get(`${this.apiURL}/users`, { headers });
+    return this.httpClient.get(`${this.apiURL}/users`, { headers })
+      .toPromise();
   }
 
+  createUser(name1, email1, password1) {
+    const token = getLocalItem('authToken');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.httpClient.post(`${this.apiURL}/users`, { password: password1, email: email1, name: name1 }, { headers })
+      .toPromise();
+  }
+
+  deleteUser(id) {
+    const token = getLocalItem('authToken');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.httpClient.delete(`${this.apiURL}/users/${id}`, { headers });
+  }
+
+  logOut() {
+    removeLocalItem('authToken');
+  }
 }

@@ -6,14 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./add-user-form.component.css']
 })
 export class AddUserFormComponent implements OnInit {
-  @Input() onFormSubmit;
+  @Input() onUserAdd;
+  @Input() logOut;
 
   name: string = '';
   email: string = '';
   password: string = '';
-
-  constructor() {
-  }
 
   clearForm() {
     this.name = '';
@@ -21,7 +19,11 @@ export class AddUserFormComponent implements OnInit {
     this.email = '';
   }
 
-  ngOnInit() {
+  onFormSubmit(name, email, password) {
+    this.clearForm();
+    this.onUserAdd(name, email, password);
   }
 
+  ngOnInit() {
+  }
 }

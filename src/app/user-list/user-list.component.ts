@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -6,12 +8,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
+  data: object = [];
 
-  constructor() {
+  constructor(private dataService: DataService, private router: Router) {
+    this.loadData();
   }
 
-  onFormSubmit(name, email, password) {
-    console.log(name, email, password);
+  logOut() {
+    this.dataService.logOut();
+    this.router.navigateByUrl('');
+
+  }
+
+  onUserAdd(name: string, email: string, password: string) {
+    this.dataService.createUser(name, email, password).then(() => this.loadData());
+  }
+
+  onUserDelete({ _id }) {
+    this.dataService.deleteUser(_id).subscribe(() => this.loadData());
+  }
+
+  loadData() {
+    this.dataService.getUsersList().then((res) => {
+      this.data = res;
+    });
   }
 
   ngOnInit() {

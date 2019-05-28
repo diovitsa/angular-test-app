@@ -1,0 +1,15 @@
+<div class="authPage">
+  <h1>Welcome to angular test app!</h1>
+  <form>
+    <mat-form-field class="inputWrapper">
+      <input matInput placeholder="Email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+
+    <mat-form-field class="inputWrapper">
+      <input matInput placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="onFormSubmit(email, password)">Login</button>
+  </form>
+</div>
+

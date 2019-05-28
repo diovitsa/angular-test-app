@@ -14,13 +14,15 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserListGridComponent } from './user-list/user-list-grid/user-list-grid.component';
 import { DataService } from './services/data.service';
 import { AddUserFormComponent } from './user-list/add-user-form/add-user-form.component';
+import { AuthorizationPageComponent } from './authorization-page/authorization-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     UserListGridComponent,
-    AddUserFormComponent
+    AddUserFormComponent,
+    AuthorizationPageComponent
   ],
   imports: [
     BrowserModule,

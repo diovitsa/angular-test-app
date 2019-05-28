@@ -1,0 +1,10 @@
+.authPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputWrapper {
+  margin-right: 10px;
+}
