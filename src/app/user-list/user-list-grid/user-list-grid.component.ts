@@ -10,7 +10,7 @@ export class UserListGridComponent implements OnInit {
   @Input() data: object;
   @Input() onUserDelete;
 
-  displayedColumns: string[] = ['email', 'name', 'password', 'actions'];
+  displayedColumns: string[] = ['name', 'email', 'password', 'actions'];
 
   ngOnInit() {
   }

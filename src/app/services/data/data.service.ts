@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { setLocalItem, getLocalItem, removeLocalItem } from '../utils/LocalStorage.util';
+import { setLocalItem, getLocalItem } from '../../utils/LocalStorage.util';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,6 @@ export class DataService {
   apiURL: string = 'https://quiet-dawn-70829.herokuapp.com';
 
   constructor(private httpClient: HttpClient) {
-  }
-
-  signIn(email, password) {
-    return this.httpClient.post(`${this.apiURL}/sign-in`, { password, email })
-      .toPromise()
-      .then((data: any) => setLocalItem('authToken', data.token));
   }
 
   getUsersList() {
@@ -36,9 +30,5 @@ export class DataService {
     const token = getLocalItem('authToken');
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
     return this.httpClient.delete(`${this.apiURL}/users/${id}`, { headers });
-  }
-
-  logOut() {
-    removeLocalItem('authToken');
   }
 }
