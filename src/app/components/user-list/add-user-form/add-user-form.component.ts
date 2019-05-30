@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificationService } from '../../../services/notification/notification.service';
 
 @Component({
   selector: 'app-add-user-form',
@@ -16,7 +16,7 @@ export class AddUserFormComponent implements OnInit {
   validationMessage: string = 'You should fill up all areas with valid info.';
   action: string = 'Hide';
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private notificationService: NotificationService) {
   }
 
   clearForm() {
@@ -33,14 +33,7 @@ export class AddUserFormComponent implements OnInit {
   isNewUserValid(name, email, password) {
     return (name.length && (email.length && email.includes('@') && password.length))
       ? true
-      : this.showErrorMessage(this.validationMessage, this.action);
-  }
-
-  showErrorMessage(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 5000,
-    });
-    return false;
+      : this.notificationService.showErrorMessage(this.validationMessage, this.action);
   }
 
   ngOnInit() {

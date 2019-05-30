@@ -11,12 +11,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserListGridComponent } from './user-list/user-list-grid/user-list-grid.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UserListGridComponent } from './components/user-list/user-list-grid/user-list-grid.component';
 import { DataService } from './services/data/data.service';
-import { AddUserFormComponent } from './user-list/add-user-form/add-user-form.component';
-import { AuthorizationPageComponent } from './authorization-page/authorization-page.component';
+import { AddUserFormComponent } from './components/user-list/add-user-form/add-user-form.component';
+import { AuthorizationPageComponent } from './components/authorization-page/authorization-page.component';
 import { AuthService } from './services/auth/auth.service';
+import { NotificationService } from './services/notification/notification.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { AuthService } from './services/auth/auth.service';
     MatButtonModule,
     MatSnackBarModule
   ],
-  providers: [DataService, AuthService],
+  providers: [DataService, AuthService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
