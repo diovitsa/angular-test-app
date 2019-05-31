@@ -1,14 +1,26 @@
-<mat-form-field class="inputWrapper">
-  <input matInput placeholder="Name" [(ngModel)]="name" >
-</mat-form-field>
+<form #form="ngForm" [formGroup]="checkForm" (ngSubmit)="onFormSubmit(name, email, password)">  <mat-form-field class="inputWrapper">
+    <input matInput placeholder="Name" [(ngModel)]="name" formControlName="name" [errorStateMatcher]="errorMatcher" />
+    <mat-error *ngIf="checkForm.get('name').errors?.required">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
 
-<mat-form-field class="inputWrapper">
-  <input matInput placeholder="Email" [(ngModel)]="email">
-</mat-form-field>
+  <mat-form-field class="inputWrapper" >
+    <input matInput placeholder="Email" [(ngModel)]="email" formControlName="email" [errorStateMatcher]="errorMatcher"/>
+    <mat-error *ngIf="checkForm.get('email').errors?.email">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="checkForm.get('email').errors?.required">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
 
-<mat-form-field class="inputWrapper">
-  <input matInput placeholder="Password" [(ngModel)]="password">
-</mat-form-field>
-
-<button mat-raised-button color="primary" (click)="onFormSubmit(name, email, password)">Add user</button>
-<button mat-raised-button color="warn" (click)="logOut()">Log Out</button>
+  <mat-form-field class="inputWrapper">
+    <input matInput placeholder="Password" [(ngModel)]="password" formControlName="password" [errorStateMatcher]="errorMatcher"/>
+    <mat-error *ngIf="checkForm.get('password').errors?.required">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Add user</button>
+  <button mat-raised-button color="warn" (click)="logOut()">Log Out</button>
+</form>

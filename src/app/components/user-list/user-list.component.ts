@@ -22,7 +22,8 @@ export class UserListComponent implements OnInit {
 
   onUserAdd(name: string, email: string, password: string) {
     return this.dataService.createUser(name, email, password)
-      .then(() => this.loadData());
+      .then(() => this.loadData())
+      .catch(() => console.log('1'));
   }
 
   onUserDelete({ _id }) {

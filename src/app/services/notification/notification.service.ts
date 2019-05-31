@@ -10,7 +10,7 @@ export class NotificationService {
 
   showErrorMessage(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 5000,
+      duration: 3000,
     });
     return false;
   }
