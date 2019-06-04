@@ -15,7 +15,7 @@ export class UserListComponent implements OnInit {
     this.loadData();
   }
 
-  logOut() {
+  logOut(): void {
     this.authService.logOut();
     this.router.navigateByUrl('');
   }
@@ -26,11 +26,11 @@ export class UserListComponent implements OnInit {
       .catch(() => console.log('1'));
   }
 
-  onUserDelete({ _id }) {
+  onUserDelete({ _id }): void {
     this.dataService.deleteUser(_id).subscribe(() => this.loadData());
   }
 
-  loadData() {
+  loadData(): void {
     this.dataService.getUsersList().then((res) => {
       this.data = res;
     });

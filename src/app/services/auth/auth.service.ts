@@ -11,17 +11,17 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {
   }
 
-  signIn(email, password) {
+  signIn(email: string, password: string): Promise<any> {
     return this.httpClient.post(`${this.apiURL}/sign-in`, { password, email })
       .toPromise()
       .then((data: any) => setLocalItem('authToken', data.token));
   }
 
-  isLoggedIn() {
+  isLoggedIn(): boolean {
     return !!getLocalItem('authToken');
   }
 
-  logOut() {
+  logOut(): void {
     removeLocalItem('authToken');
   }
 

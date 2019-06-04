@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { NotificationService } from '../../../services/notification/notification.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AddUserFormErrorMatcher } from '../../../utils/EmailErrorMatcher';
+import { AddUserFormErrorMatcher } from '../../../utils/FormErrorMatcher';
 
 
 @Component({
@@ -26,7 +26,15 @@ export class AddUserFormComponent implements OnInit {
   constructor(private notificationService: NotificationService, private formBuilder: FormBuilder) {
   }
 
-  clearForm() {
+  ngOnInit() {
+    this.checkForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
+
+  clearForm(): void {
     this.name = '';
     this.password = '';
     this.email = '';
@@ -41,17 +49,9 @@ export class AddUserFormComponent implements OnInit {
       });
   }
 
-  isNewUserValid(name, email, password) {
+  isNewUserValid(name, email, password): boolean {
     return (name.trim().length && (email.trim().length && email.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-])/) && password.trim().length))
       ? true
       : this.notificationService.showErrorMessage(this.validationMessage, this.action);
-  }
-
-  ngOnInit() {
-    this.checkForm = this.formBuilder.group({
-      'name': ['', Validators.required],
-      'email': ['', [Validators.required, Validators.email] ],
-      'password': ['', Validators.required]
-    });
   }
 }

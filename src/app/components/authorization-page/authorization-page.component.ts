@@ -15,7 +15,7 @@ export class AuthorizationPageComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {
   }
 
-  onFormSubmit(email, password) {
+  onFormSubmit(email: string, password: string): void {
     this.authService.signIn(email, password)
       .then(() => this.router.navigateByUrl('user-list'));
   }

@@ -19,14 +19,14 @@ export class DataService {
       .toPromise();
   }
 
-  createUser(name1, email1, password1) {
+  createUser(userName: string, userEmail: string, userPassword: string): Promise<any> {
     const token = getLocalItem('authToken');
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-    return this.httpClient.post(`${this.apiURL}/users`, { password: password1, email: email1, name: name1 }, { headers })
+    return this.httpClient.post(`${this.apiURL}/users`, { password: userPassword, email: userEmail, name: userName }, { headers })
       .toPromise();
   }
 
-  deleteUser(id) {
+  deleteUser(id: string) {
     const token = getLocalItem('authToken');
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
     return this.httpClient.delete(`${this.apiURL}/users/${id}`, { headers });

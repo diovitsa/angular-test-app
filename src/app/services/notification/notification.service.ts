@@ -8,7 +8,7 @@ export class NotificationService {
 
   constructor(private snackBar: MatSnackBar) { }
 
-  showErrorMessage(message: string, action: string) {
+  showErrorMessage(message: string, action: string): boolean {
     this.snackBar.open(message, action, {
       duration: 3000,
     });
