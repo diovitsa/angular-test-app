@@ -65,7 +65,6 @@ describe('DataServiceService', () => {
     it('should send \'delete\' request with provided params', () => {
       const getParams = httpClientSpy.delete.calls.argsFor(0);
       const getJsonParams = [...getParams.map(param => JSON.stringify(param))];
-      console.log(getJsonParams);
 
       getJsonParams.forEach((param, index) => {
         expect(param).toEqual(deleteRequestParams[index]);

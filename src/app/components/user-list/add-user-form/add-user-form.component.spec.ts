@@ -101,14 +101,14 @@ describe('AddUserFormComponent', () => {
       });
     });
 
-    // describe('when user info is invalid', () => {
-    //   beforeEach(() => {
-    //     component.isNewUserValid('', 'invalidTestEmail', 'testPass');
-    //   });
-    //   it('should show error message', () => {
-    //     expect(component.notificationService.showErrorMessage).toHaveBeenCalled();
-    //   });
-    // });
+    describe('when user info is invalid', () => {
+      beforeEach(() => {
+        component.isNewUserValid('', 'invalidTestEmail', 'testPass');
+      });
+      it('should show error message', () => {
+        expect(notificationService.showErrorMessage).toHaveBeenCalled();
+      });
+    });
 
   });
 });
