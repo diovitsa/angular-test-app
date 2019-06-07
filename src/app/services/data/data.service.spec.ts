@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { DataService } from './data.service';
 import { Observable } from 'rxjs';
 
-const getRequestParams = ['"https://quiet-dawn-70829.herokuapp.com/users"',
+const getRequestParams: string[] = ['"https://quiet-dawn-70829.herokuapp.com/users"',
   '{"headers":{"normalizedNames":{},"lazyUpdate":null}}'];
 
-const postRequestParams = ['"https://quiet-dawn-70829.herokuapp.com/users"',
+const postRequestParams: string[] = ['"https://quiet-dawn-70829.herokuapp.com/users"',
   '{"password":"testPass","email":"test@gmail.com","name":"testName"}',
   '{"headers":{"normalizedNames":{},"lazyUpdate":null}}'];
 
-const deleteRequestParams = ['"https://quiet-dawn-70829.herokuapp.com/users/testId"',
+const deleteRequestParams: string[] = ['"https://quiet-dawn-70829.herokuapp.com/users/testId"',
   '{"headers":{"normalizedNames":{},"lazyUpdate":null}}'];
 
 describe('DataServiceService', () => {
