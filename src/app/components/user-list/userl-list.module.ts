@@ -19,7 +19,6 @@ import { CommonModule } from '@angular/common';
     AddUserFormComponent,
   ],
   imports: [
-    FormsModule,
     CommonModule,
     ReactiveFormsModule,
     MatTableModule,
