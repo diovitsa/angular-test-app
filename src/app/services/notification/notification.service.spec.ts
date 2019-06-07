@@ -6,7 +6,6 @@ describe('NotificationService', () => {
   const snackBarSpy = jasmine.createSpyObj('MatSnackBar', ['open']);
 
   beforeEach(() => {
-
     service = new NotificationService(snackBarSpy);
   });
 
