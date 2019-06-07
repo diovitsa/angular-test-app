@@ -1,4 +1,5 @@
-<form #form="ngForm" [formGroup]="checkForm" (ngSubmit)="onFormSubmit(name, email, password)">  <mat-form-field class="inputWrapper">
+<form #form="ngForm" [formGroup]="checkForm" (ngSubmit)="onFormSubmit(name, email, password)">
+  <mat-form-field class="inputWrapper">
     <input matInput placeholder="Name" [(ngModel)]="name" formControlName="name" [errorStateMatcher]="errorMatcher" />
     <mat-error *ngIf="checkForm.get('name').errors?.required">
       Email is <strong>required</strong>
@@ -22,5 +23,5 @@
     </mat-error>
   </mat-form-field>
   <button mat-raised-button color="primary" type="submit">Add user</button>
-  <button mat-raised-button color="warn" (click)="logOut()">Log Out</button>
+  <button mat-raised-button color="warn" (click)="logOut.emit()">Log Out</button>
 </form>

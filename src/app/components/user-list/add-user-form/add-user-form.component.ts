@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { NotificationService } from '../../../services/notification/notification.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AddUserFormErrorMatcher } from '../../../utils/FormErrorMatcher';
@@ -11,7 +11,7 @@ import { AddUserFormErrorMatcher } from '../../../utils/FormErrorMatcher';
 })
 export class AddUserFormComponent implements OnInit {
   @Input() onUserAdd;
-  @Input() logOut;
+  @Output() logOut = new EventEmitter();
 
   name: string = '';
   email: string = '';
