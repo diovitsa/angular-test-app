@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { setLocalItem, getLocalItem } from '../../utils/LocalStorage.util';
+import { getLocalItem } from '../../utils/LocalStorage.util';
 import { Observable } from 'rxjs';
-import { User } from '../../interfaces/user';
+// import { User } from '../../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class DataService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getUsersList() {
+  getUsersList(): Promise<any> {
     const token = getLocalItem('authToken');
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
     return this.httpClient.get(`${this.apiURL}/users`, { headers })
