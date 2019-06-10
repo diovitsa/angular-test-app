@@ -5,11 +5,12 @@ import { AuthService } from '../../services/auth/auth.service';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 
 const activatedRouteSnap = new ActivatedRouteSnapshot();
-const routerSnapshotMock: any = jasmine.createSpyObj<RouterStateSnapshot>('RouterStateSnapshot', ['toString']);
+let routerSnapshotMock: jasmine.SpyObj<RouterStateSnapshot>;
 
 describe('AuthGuard', () => {
   let authService: jasmine.SpyObj<AuthService>;
   let router: jasmine.SpyObj<Router>;
+  routerSnapshotMock = jasmine.createSpyObj<RouterStateSnapshot>('RouterStateSnapshot', ['toString']);
 
   beforeEach(() => {
     authService = jasmine.createSpyObj('AuthService', ['isLoggedIn']);

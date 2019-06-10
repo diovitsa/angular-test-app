@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { setLocalItem, removeLocalItem, getLocalItem } from '../../utils/LocalStorage.util';
+import { SuccessObj } from '../../interfaces/succesObj';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
   signIn(email: string, password: string): Promise<any> {
     return this.httpClient.post(`${this.apiURL}/sign-in`, { password, email })
       .toPromise()
-      .then((data: any) => setLocalItem('authToken', data.token));
+      .then((data: SuccessObj) => setLocalItem('authToken', data.token));
   }
 
   isLoggedIn(): boolean {

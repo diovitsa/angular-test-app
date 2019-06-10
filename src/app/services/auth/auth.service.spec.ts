@@ -21,7 +21,7 @@ describe('AuthService', () => {
     });
 
     it('should be created', () => {
-      const getParams: any[] = httpClientSpy.post.calls.argsFor(0);
+      const getParams: string[] = httpClientSpy.post.calls.argsFor(0);
       const getJsonParams: string[] = [...getParams.map(param => JSON.stringify(param))];
 
       getJsonParams.forEach((param, index) => {
