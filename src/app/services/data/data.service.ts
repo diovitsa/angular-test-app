@@ -13,7 +13,7 @@ export class DataService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getUsersList(): Promise<any> {
+  getUsersList() {
     const token = getLocalItem('authToken');
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
     return this.httpClient.get(`${this.apiURL}/users`, { headers })

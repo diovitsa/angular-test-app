@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export class UserListGridComponent implements OnInit {
   @Input() data: object;
-  @Input() onUserDelete;
+  @Input() deleteUser;
 
   displayedColumns: string[] = ['name', 'email', 'password', 'actions'];
 

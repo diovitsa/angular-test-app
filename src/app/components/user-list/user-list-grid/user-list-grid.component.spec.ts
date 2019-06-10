@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserListGridComponent } from './user-list-grid.component';
+import { MatTableModule } from '@angular/material';
 
 describe('UserListGridComponent', () => {
   let component: UserListGridComponent;
@@ -8,9 +9,10 @@ describe('UserListGridComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserListGridComponent ]
+      declarations: [UserListGridComponent],
+      imports: [MatTableModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -20,6 +22,6 @@ describe('UserListGridComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component.displayedColumns).toEqual(['name', 'email', 'password', 'actions']);
   });
 });

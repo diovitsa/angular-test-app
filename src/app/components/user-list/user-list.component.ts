@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data/data.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
+import { Promise } from 'q';
 
 @Component({
   selector: 'app-user-list',
@@ -20,18 +21,17 @@ export class UserListComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
-  onUserAdd(name: string, email: string, password: string) {
+  addUser(name: string, email: string, password: string) {
     return this.dataService.createUser(name, email, password)
-      .then(() => this.loadData())
-      .catch(() => console.log('1'));
+      .then(() => this.loadData());
   }
 
-  onUserDelete({ _id }): void {
+  deleteUser({ _id }): void {
     this.dataService.deleteUser(_id).subscribe(() => this.loadData());
   }
 
-  loadData(): void {
-    this.dataService.getUsersList().then((res) => {
+  loadData() {
+    return this.dataService.getUsersList().then((res) => {
       this.data = res;
     });
   }

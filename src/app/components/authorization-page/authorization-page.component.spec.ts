@@ -31,7 +31,7 @@ describe('AuthorizationPageComponent', () => {
         BrowserAnimationsModule,
         RouterTestingModule
       ],
-      providers: [AuthorizationPageComponent, { provide: AuthService, useValue: authService },
+      providers: [{ provide: AuthService, useValue: authService },
         { provide: Router, useValue: router }],
     }).compileComponents();
   }));

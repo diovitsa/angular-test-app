@@ -1,3 +1,3 @@
 <h1>Users list</h1>
-<app-add-user-form class="addingForm" [onUserAdd]="onUserAdd.bind(this)" (logOut)="logOut()"></app-add-user-form>
-<app-user-list-grid [data]="data" [onUserDelete]="onUserDelete.bind(this)"></app-user-list-grid>
+<app-add-user-form class="addingForm" [addUser]="addUser.bind(this)" (logOut)="logOut()"></app-add-user-form>
+<app-user-list-grid [data]="data" [deleteUser]="deleteUser.bind(this)"></app-user-list-grid>

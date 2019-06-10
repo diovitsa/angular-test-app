@@ -32,7 +32,7 @@ describe('AddUserFormComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AddUserFormComponent);
     component = fixture.componentInstance;
-    component.onUserAdd = () => {};
+    component.addUser = () => {};
     fixture.detectChanges();
   });
 
@@ -70,7 +70,7 @@ describe('AddUserFormComponent', () => {
     let res;
     beforeEach(() => {
       spyOn(component, 'isNewUserValid').and.returnValue(true);
-      spyOn(component, 'onUserAdd').and.returnValue(Promise.resolve());
+      spyOn(component, 'addUser').and.returnValue(Promise.resolve());
       spyOn(component, 'clearForm');
       res = component.onFormSubmit('testName', 'testEmail', 'testPass');
     });
@@ -80,7 +80,7 @@ describe('AddUserFormComponent', () => {
     });
 
     it('should add user to grid', () => {
-      expect(component.onUserAdd).toHaveBeenCalledWith('testName', 'testEmail', 'testPass');
+      expect(component.addUser).toHaveBeenCalledWith('testName', 'testEmail', 'testPass');
     });
 
     describe('on data resolve', () => {

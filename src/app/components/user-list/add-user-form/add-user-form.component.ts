@@ -10,7 +10,7 @@ import { AddUserFormErrorMatcher } from '../../../utils/FormErrorMatcher';
   styleUrls: ['./add-user-form.component.css']
 })
 export class AddUserFormComponent implements OnInit {
-  @Input() onUserAdd;
+  @Input() addUser;
   @Output() logOut = new EventEmitter();
 
   name: string = '';
@@ -43,7 +43,7 @@ export class AddUserFormComponent implements OnInit {
   }
 
   onFormSubmit(name: string, email: string, password: string) {
-    return this.isNewUserValid(name, email, password) && this.onUserAdd(name, email, password)
+    return this.isNewUserValid(name, email, password) && this.addUser(name, email, password)
       .then(() => {
         this.clearForm();
       });
