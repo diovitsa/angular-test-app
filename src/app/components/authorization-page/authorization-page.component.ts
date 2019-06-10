@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
-// import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-authorization-page',
@@ -16,7 +15,7 @@ export class AuthorizationPageComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {
   }
 
-  onFormSubmit(email: string, password: string): Promise<any> {
+  onFormSubmit(email: string, password: string): Promise<boolean> {
     return this.authService.signIn(email, password)
       .then(() => this.router.navigateByUrl('user-list'));
   }

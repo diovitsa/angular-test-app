@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data/data.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
-import { Promise } from 'q';
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-user-list',
@@ -30,9 +30,10 @@ export class UserListComponent implements OnInit {
     this.dataService.deleteUser(_id).subscribe(() => this.loadData());
   }
 
-  loadData() {
+  loadData(): Promise<User> {
     return this.dataService.getUsersList().then((res) => {
       this.data = res;
+      return res;
     });
   }
 

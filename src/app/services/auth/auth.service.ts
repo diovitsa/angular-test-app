@@ -12,8 +12,8 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {
   }
 
-  signIn(email: string, password: string): Promise<any> {
-    return this.httpClient.post(`${this.apiURL}/sign-in`, { password, email })
+  signIn(email: string, password: string): Promise<SuccessObj> {
+    return this.httpClient.post<SuccessObj>(`${this.apiURL}/sign-in`, { password, email })
       .toPromise()
       .then((data: SuccessObj) => setLocalItem('authToken', data.token));
   }
