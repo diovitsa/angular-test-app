@@ -10,6 +10,7 @@ export class NotificationService {
 
   showErrorMessage(message: string, action: string): boolean {
     this.snackBar.open(message, action, {
+      panelClass: 'warning',
       duration: 3000,
     });
     return false;

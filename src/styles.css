@@ -1,2 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+snack-bar-container.warning {
+  background: red;
+  color: black;
+}
+
+.warning .mat-simple-snackbar-action {
+  color: black;
+  background: white;
+  border-radius: 5px;
+}
+
+.warning .mat-simple-snackbar-action:hover {
+  color: white;
+  background: black;
+}
