@@ -15,7 +15,7 @@ describe('NotificationService', () => {
     });
 
     it('should show snackbar with provided params', () => {
-      expect(snackBarSpy.open).toHaveBeenCalledWith('testMessage', 'testAction', { duration: 3000 });
+      expect(snackBarSpy.open).toHaveBeenCalledWith('testMessage', 'testAction', { panelClass: 'warning', duration: 3000 });
     });
   });
 });
